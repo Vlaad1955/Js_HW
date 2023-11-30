@@ -144,7 +144,6 @@ function swap (arr, index1, index2){
 console.log(swap([10,11,12,13,14,15], 0, 2));
 
 //Написати функцію обміну валюти exchange(sumUAH,currencyValues,exchangeCurrency)
-//не зрозумів самого завдання
 
 function exchange(sumUAH,currencyValues,exchangeCurrency){
     for(let i = 0; i < currencyValues.length; i++){
