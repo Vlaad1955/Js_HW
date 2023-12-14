@@ -43,7 +43,7 @@ console.log(userFilter);
 
 //Взяти масив з  User[] з попереднього завдання, та відсортувати його по id. по зростанню (sort)
 
-let userSort = userArr.sort((a, b) => b.id - a.id);
+let userSort = userArr.sort((a, b) => a.id - b.id);
 console.log(userSort);
 
 //створити класс для об'єктів Client з полями id, name, surname , email, phone, order (поле є масивом зі списком товарів)
@@ -82,7 +82,7 @@ console.log(clientsArray);
 
 //Взяти масив (Client [] з попереднього завдання).Відсортувати його по кількості товарів в полі order по зростанню. (sort)
 
-let clientsort = clientsArray.sort((a,b) => b.order.length - a.order.length)
+let clientsort = clientsArray.sort((a,b) => a.order.length - b.order.length)
 console.log(clientsort);
 
 //- Створити функцію конструктор яка дозволяє створювати об'єкти car, з властивостями модель, виробник, рік випуску, максимальна швидкість, об'єм двигуна. додати в об'єкт функції:
