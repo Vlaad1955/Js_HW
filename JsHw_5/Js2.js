@@ -87,9 +87,16 @@ arkan(peopls);
 
 //створити функцію яка повертає найменьше число з масиву
 
-let mini = (...masiv) => Math.min(...masiv);
-
-console.log(mini( 12, 58, 9));
+let mini = (...masiv) => {
+    let min = masiv[0];
+    for(let i = 0; i < masiv.length; i++){
+        if(masiv[i] < min){
+            min = masiv[i];
+        }
+    }
+    return min;
+}
+console.log(mini( 12, 10, 91));
 
 //створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його.
 
