@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link rel="stylesheet" href="STuser.css">
+</head>
+
+<body>
+
+<div id='bod'></div>
+<button id='title'>post of current user</button>
+<div id='tle'></div>
+<script>
+    let url = new URL(location.href);
+    let userJSON = url.searchParams.get(`value`);
+    let user = JSON.parse(userJSON);
+    let detailsElement = document.getElementById(`bod`);
+    detailsElement.innerHTML = `
+        <h2>User Details</h2>
+        <p>ID: ${user.id}</p>
+        <p>Name: ${user.name}</p>
+        <p>Email: ${user.email}</p>
+        <p>Phone: ${user.phone}</p>
+        <p>Address: ${user.address.city}, ${user.address.street}, ${user.address.suite}</p>
+        <p>Website: ${user.website}</p>`;
+
+    let btn2 = document.getElementById(`title`);
+    btn2.onclick = function (e) {
+        fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/posts`)
+            .then(value => value.json())
+            .then(value => {
+                let div = document.getElementById(`tle`);
+                div.innerHTML = '';
+                for (const user1 of value) {
+                    let postBlock = document.createElement(`div`);
+                    postBlock.className = "post-block";
+                    postBlock.innerHTML = `<p>${user1.title}</p>`;
+
+                    let btn3 = document.createElement(`button`);
+                    btn3.innerText = `Post Details`;
+                    btn3.className = "post-details-btn";
+                    btn3.onclick = function (e) {
+                        window.location.href = `post-details.html?value=` + JSON.stringify(user1);
+                    };
+                    let post = document.createElement('div');
+                    post.className = "post"
+                    post.appendChild(postBlock);
+                    post.appendChild(btn3);
+                    div.appendChild(post);
+                }
+            })
+    };
+</script>
+</body>
+</html>

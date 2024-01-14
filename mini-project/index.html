@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="STindex.css">
+</head>
+<body>
+
+<div id = "list">
+
+</div>
+
+<script>
+    fetch(`https://jsonplaceholder.typicode.com/users`)
+        .then(value => value.json())
+        .then(value => {
+            for (const user of value) {
+                let div = document.getElementById(`list`);
+                let block = document.createElement(`div`);
+                block.className = "user-block";
+
+                let userDetails = document.createElement(`p`);
+                userDetails.innerText = `${user.id} ${user.name}`;
+
+                let btn1 = document.createElement(`button`);
+                btn1.innerText = `User Details`;
+                btn1.className = "user-details";
+
+                block.appendChild(userDetails);
+                block.appendChild(btn1);
+                div.appendChild(block);
+
+                btn1.onclick = function (e) {
+                    window.location.href = `user-details.html?value=` + JSON.stringify(user);
+                };
+            }
+        });
+</script>
+</body>
+</html>
